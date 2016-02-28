@@ -1,23 +1,122 @@
 module.exports = [
 	{
-		name : 'Aldebaran'
+		constellation : 	'Andromeda',
+		name : 				'Alpheratz'
 	},
 	{
-		name : 'Algol'
+		constellation : 	'Andromeda',
+		name : 				'Sirrah'
 	},
 	{
-		name : 'Antares'
+		constellation : 	'Andromeda',
+		name : 				'Mirach'
 	},
 	{
-		name : 'Regulus'
+		constellation : 	'Andromeda',
+		name : 				'Almak'
 	},
 	{
-		name : 'Sirius'
+		constellation : 	'Andromeda',
+		name : 				'Adhil'
 	},
 	{
-		name : 'Spica'
+		constellation : 	'Andromeda',
+		name : 				'Adhab'
+	},
+
+
+
+
+
+	{
+		constellation : 	'Aquila',
+		name : 				'Altair'
 	},
 	{
-		name : 'Vega'
-	}
+		constellation : 	'Aquila',
+		name : 				'Alshain'
+	},
+	{
+		constellation : 	'Aquila',
+		name : 				'Tarazed'
+	},
+	{
+		constellation : 	'Aquila',
+		name : 				'Al Mizan'
+	},
+	{
+		constellation : 	'Aquila',
+		name : 				'Dheneb'
+	},
+	{
+		constellation : 	'Aquila',
+		name : 				'Bazak'
+	},
+
+
+
+
+
+	{
+		constellation : 	'Aquarius',
+		name : 				'Sadalmelek'
+	},
+	{
+		constellation : 	'Aquarius',
+		name : 				'Sadalsuud'
+	},
+	{
+		constellation : 	'Aquarius',
+		name : 				'Sadalachbia'
+	},
+	{
+		constellation : 	'Aquarius',
+		name : 				'Skat'
+	},
+	{
+		constellation : 	'Aquarius',
+		name : 				'Albali'
+	},
+	{
+		constellation : 	'Aquarius',
+		name : 				'Hydria'
+	},
+
+
+
+
+
+	{
+		constellation : 	'Ara',
+		name : 				'Ara'
+	},
+
+
+
+
+
+	{
+		constellation : 	'Aries',
+		name : 				'Hamal'
+	},
+	{
+		constellation : 	'Aries',
+		name : 				'Sheratan'
+	},
+	{
+		constellation : 	'Aries',
+		name : 				'Mesarthim'
+	},
+	{
+		constellation : 	'Aries',
+		name : 				'Botein'
+	},
+
+
+
+
+
+
+
+
 ];

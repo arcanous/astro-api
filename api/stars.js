@@ -36,10 +36,11 @@ module.exports = function (time) {
 			swisseph.swe_fixstar_ut (star.name, julday_ut, flag, function (body) {
 
 				starsList.push({
-					star : star.name,
-					altName : body.name.replace(star.name + ',' ,''),
-					lat : body.latitude,
-					long : body.longitude
+					"name" 		: star.name,
+					"const" 	: star.constellation,
+					"altName" 	: body.name.replace(star.name + ',' ,''),
+					"lat" 		: body.latitude,
+					"long" 		: body.longitude
 
 				});
 				
