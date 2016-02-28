@@ -1,0 +1,28 @@
+{
+  "name": "astro-api",
+  "version": "1.0.0",
+  "description": "api for getting ephemeris data (stars, planets, etc.)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcanous/astro-api.git"
+  },
+  "keywords": [
+    "astro",
+    "stars"
+  ],
+  "author": "harijs.deksnis@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arcanous/astro-api/issues"
+  },
+  "homepage": "https://github.com/arcanous/astro-api#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "swisseph": "^0.5.7",
+    "underscore": "^1.8.3"
+  }
+}
