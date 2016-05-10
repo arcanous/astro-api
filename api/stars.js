@@ -9,12 +9,6 @@ var flag = swisseph.SEFLG_SPEED | swisseph.SEFLG_MOSEPH;
 // path to ephemeris data
 swisseph.swe_set_ephe_path ('node_modules/swisseph/ephe');
 
-var starName = 'Regulus';
-
-
-
-
-
 
 module.exports = function (time) {
 
@@ -35,15 +29,16 @@ module.exports = function (time) {
 
 			swisseph.swe_fixstar_ut (star.name, julday_ut, flag, function (body) {
 
-				starsList.push({
-					"name" 		: star.name,
-					"const" 	: star.constellation,
-					"altName" 	: body.name.replace(star.name + ',' ,''),
-					"lat" 		: body.latitude,
-					"long" 		: body.longitude
+				if (!body.error) {
+					starsList.push({
+						"name" 		: star.name,
+						"const" 	: star.constellation,
+						"altName" 	: body.name.replace(star.name + ',' ,''),
+						"lat" 		: body.latitude,
+						"long" 		: body.longitude
 
-				});
-				
+					});
+				}
 
 			});
 
