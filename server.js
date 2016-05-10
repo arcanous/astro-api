@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser')
 var starsApi = require('./api/stars');
 var helioApi = require('./api/helio');
+var fbMessengerBot = require('./fbMessengerBot/');
 
 
 app.use(bodyParser.json());
@@ -44,13 +45,7 @@ app.get('/helio/:day/:month/:year/:hour/:minute/:gmt/', function (req, res) {
 });
 
 
-app.get('/webhook', function (req, res) {
-  if (req.query['hub.verify_token'] === 'supersecret') {
-    res.send(req.query['hub.challenge']);
-  } else {
-    res.send('Error, wrong validation token');    
-  }
-});
+app.post('/webhook', fbMessengerBot);
 
 
 
