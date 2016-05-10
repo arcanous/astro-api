@@ -43,7 +43,7 @@ var listOfOptions = {
           {
             "type":"postback",
             "title":"Start Chatting",
-            "payload":"USER_DEFINED_PAYLOAD"
+            "payload":"START_CHATTING"
           }
         ]
       }
@@ -63,6 +63,16 @@ module.exports = function (req, res) {
       sendTextMessage(sender, listOfOptions);
 
     }
+
+    if(event.postback && event.postback.payload) {
+
+        sendTextMessage(sender, {
+            text : 'very well! i\'m listening...';
+        });
+
+    }
+
+
   }
   res.sendStatus(200);
 
