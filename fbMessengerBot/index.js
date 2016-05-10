@@ -1,31 +1,4 @@
-var request = require('request');
-
-
-
-
-var token = "EAALY3w1YNhwBACBRALkIZAL20fZAlmBQUyZBgamDKaSwtXL9LFADJVAc5N7chBrJWVtxjsx10qGLkeiJZClThnUxWadx6md3ZB5FEC1jo3MUJkGRctXVhDqCNbp2TUNZBDsTOrlk9OvJ65Pts1dGYJHvJRfbdEIeDNfyPFJUMIOQZDZD";
-
-function sendTextMessage(sender, messageData) {
-  // messageData = {
-  //   text:text
-  // }
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
-    method: 'POST',
-    json: {
-      recipient: {id:sender},
-      message: messageData,
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-  });
-}
-
+var sendMessage = require('./sendMessage');
 
 
 var listOfOptions = {
@@ -50,34 +23,56 @@ var listOfOptions = {
     }
     };
 
+
+
 module.exports = function (req, res) {
 
   messaging_events = req.body.entry[0].messaging;
+  
   for (i = 0; i < messaging_events.length; i++) {
+    
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
+    recipient = event.recipient.id;
+
+
+    //messages
     if (event.message && event.message.text) {
       text = event.message.text;
       // Handle a text message from this sender
 
-      sendTextMessage(sender, listOfOptions);
+      sendMessage(sender, listOfOptions);
 
     }
 
-    if(event.postback && event.postback.payload) {
 
-        sendTextMessage(sender, {
+    //messaging_postbacks
+    if (event.postback && event.postback.payload) {
+
+        sendMessage(sender, {
             text : 'very well! i\'m listening...'
         });
 
     }
 
+    //messaging_optins
+    if (event.optin && event.optin.ref) {
+
+
+
+    }
+
+
+    //message_deliveries
+    if (event.delivery && event.delivery.watermark) {
+
+
+
+    }
+
 
   }
+
   res.sendStatus(200);
 
-
-
 };
-
-
