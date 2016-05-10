@@ -5,10 +5,10 @@ var request = require('request');
 
 var token = "EAALY3w1YNhwBACBRALkIZAL20fZAlmBQUyZBgamDKaSwtXL9LFADJVAc5N7chBrJWVtxjsx10qGLkeiJZClThnUxWadx6md3ZB5FEC1jo3MUJkGRctXVhDqCNbp2TUNZBDsTOrlk9OvJ65Pts1dGYJHvJRfbdEIeDNfyPFJUMIOQZDZD";
 
-function sendTextMessage(sender, text) {
-  messageData = {
-    text:text
-  }
+function sendTextMessage(sender, messageData) {
+  // messageData = {
+  //   text:text
+  // }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {access_token:token},
@@ -27,6 +27,29 @@ function sendTextMessage(sender, text) {
 }
 
 
+
+var listOfOptions = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://petersapparel.parseapp.com",
+            "title":"Show Website"
+          },
+          {
+            "type":"postback",
+            "title":"Start Chatting",
+            "payload":"USER_DEFINED_PAYLOAD"
+          }
+        ]
+      }
+    }
+    };
+
 module.exports = function (req, res) {
 
   messaging_events = req.body.entry[0].messaging;
@@ -37,8 +60,8 @@ module.exports = function (req, res) {
       text = event.message.text;
       // Handle a text message from this sender
 
-      sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
-      
+      sendTextMessage(sender, listOfOptions);
+
     }
   }
   res.sendStatus(200);
@@ -46,3 +69,5 @@ module.exports = function (req, res) {
 
 
 };
+
+
