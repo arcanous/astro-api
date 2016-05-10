@@ -67,7 +67,7 @@ module.exports = function (req, res) {
     if(event.postback && event.postback.payload) {
 
         sendTextMessage(sender, {
-            text : 'very well! i\'m listening...';
+            text : 'very well! i\'m listening...'
         });
 
     }
