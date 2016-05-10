@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser')
 var starsApi = require('./api/stars');
 var helioApi = require('./api/helio');
+
+
+app.use(bodyParser.json());
 
 
 app.get('/stars/:day/:month/:year/:hour/:minute/:gmt/', function (req, res) {
@@ -38,6 +42,16 @@ app.get('/helio/:day/:month/:year/:hour/:minute/:gmt/', function (req, res) {
     res.send(JSON.stringify(planetList));	
 
 });
+
+
+app.get('/webhook', function (req, res) {
+  if (req.query['hub.verify_token'] === 'supersecret') {
+    res.send(req.query['hub.challenge']);
+  } else {
+    res.send('Error, wrong validation token');    
+  }
+});
+
 
 
 app.use(function(req, res){

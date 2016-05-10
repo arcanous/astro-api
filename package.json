@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/arcanous/astro-api#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "swisseph": "^0.5.7",
     "underscore": "^1.8.3"
