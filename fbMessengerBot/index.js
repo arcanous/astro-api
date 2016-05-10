@@ -1,28 +1,5 @@
-var sendMessage = require('./sendMessage');
-
-
-var listOfOptions = {
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"What do you want to do next?",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
-          },
-          {
-            "type":"postback",
-            "title":"Start Chatting",
-            "payload":"START_CHATTING"
-          }
-        ]
-      }
-    }
-    };
-
+var handleMessages = require('./handleMessages');
+var handlePostbacks = require('./handlePostbacks');
 
 
 module.exports = function (req, res) {
@@ -38,10 +15,8 @@ module.exports = function (req, res) {
 
     //messages
     if (event.message && event.message.text) {
-      text = event.message.text;
-      // Handle a text message from this sender
-
-      sendMessage(sender, listOfOptions);
+      
+      handleMessages(sender, event.message);
 
     }
 
@@ -49,9 +24,7 @@ module.exports = function (req, res) {
     //messaging_postbacks
     if (event.postback && event.postback.payload) {
 
-        sendMessage(sender, {
-            text : 'very well! i\'m listening...'
-        });
+        handlePostbacks(sender, event.postback);
 
     }
 
