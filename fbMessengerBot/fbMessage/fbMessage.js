@@ -214,6 +214,34 @@ module.exports.ButtonTemplate = function (title) {
 module.exports.GenericTemplate = function () {
     var self = this;
 
+    self.message = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": []
+            }
+        }
+    };
+
+
+     self.addElement = function (elementConfig) {
+
+        self.message.attachment.payload.elements.push(elementConfig);
+
+        return self;
+     };
+
+
+
+    self.compose = function () {
+
+        if (self.message.attachment.payload.elements.length === 0) {
+            throw Error('You have to add at least 1 element to GenericTemplate message');
+        }
+        return self.message;
+    };
+
 
 };
 
@@ -286,6 +314,6 @@ module.exports.GenericTemplate = function () {
 */
 module.exports.Receipt = function () {
     var self = this;
-
+    //not implemented
 
 };

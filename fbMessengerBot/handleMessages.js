@@ -22,11 +22,11 @@ module.exports = function (senderId, message) {
 
 
     var buttonTemplateReply = new fbMessage
-        .ButtonTemplate("Which button would you like to press today")
+        .ButtonTemplate("Which button would you like to press today?")
         .addButton({
             type:   "web_url",
             title:  "www.apollo.lv",
-            url:    "https://www.apollo.lv"
+            url:    "http://www.apollo.lv"
         })
         .addButton({
             type:       "postback",
@@ -39,42 +39,74 @@ module.exports = function (senderId, message) {
 
 
 
-    // sendMessage(senderId, {
-    //     text : 'So you say "' + message.text + '" ?'
-    // });
-    // sendMessage(senderId, {
-    //     text : 'What does it even mean?'
-    // });
+    var genericTemplateReply = new fbMessage
+        .GenericTemplate()
+        .addElement({
+            "title": "Classic White T-Shirt",
+            "image_url": "http://petersapparel.parseapp.com/img/item100-thumb.png",
+            "subtitle": "Soft white cotton t-shirt is back in style",
+            "buttons": [{
+                "type": "web_url",
+                "url": "https://petersapparel.parseapp.com/view_item?item_id=100",
+                "title": "View Item"
+            }, {
+                "type": "web_url",
+                "url": "https://petersapparel.parseapp.com/buy_item?item_id=100",
+                "title": "Buy Item"
+            }, {
+                "type": "postback",
+                "title": "Bookmark Item",
+                "payload": "USER_DEFINED_PAYLOAD_FOR_ITEM100"
+            }]
+        })
+        .addElement({
+            "title": "Classic Grey T-Shirt",
+            "image_url": "http://petersapparel.parseapp.com/img/item101-thumb.png",
+            "subtitle": "Soft gray cotton t-shirt is back in style",
+            "buttons": [{
+                "type": "web_url",
+                "url": "https://petersapparel.parseapp.com/view_item?item_id=101",
+                "title": "View Item"
+            }, {
+                "type": "web_url",
+                "url": "https://petersapparel.parseapp.com/buy_item?item_id=101",
+                "title": "Buy Item"
+            }, {
+                "type": "postback",
+                "title": "Bookmark Item",
+                "payload": "USER_DEFINED_PAYLOAD_FOR_ITEM101"
+            }]
+        })
+        .addElement({
+            "title": "Some third option",
+            "image_url": "https://s-media-cache-ak0.pinimg.com/564x/fe/3f/87/fe3f8734980b5f0075a4221e20081520.jpg",
+            "subtitle": "Knight in mystic light",
+            "buttons": [{
+                "type": "web_url",
+                "url": "https://s-media-cache-ak0.pinimg.com/564x/fe/3f/87/fe3f8734980b5f0075a4221e20081520.jpg",
+                "title": "View Item"
+            }, {
+                "type": "web_url",
+                "url": "https://nl.pinterest.com/mihrandil/knighthood/",
+                "title": "See gallery"
+            }, {
+                "type": "postback",
+                "title": "Do a postback",
+                "payload": "ANOTHER_POSTBACK"
+            }, {
+                "type": "postback",
+                "title": "Or not",
+                "payload": "ANOTHER_POSTBACK1"
+            }, {
+                "type": "postback",
+                "title": "Yet another one",
+                "payload": "ANOTHER_POSTBACK2"
+            }]
+        })
+        .compose();
 
-    // sendMessage(senderId, {
-    //     "attachment":{
-    //       "type":"template",
-    //       "payload":{
-    //         "template_type":"button",
-    //         "text":"Ok, I've got 3 options for you...",
-    //         "buttons":[
-    //           {
-    //             "type":"web_url",
-    //             "url":"https://www.google.com",
-    //             "title":"Ask the same thing to google"
-    //           },
-    //           {
-    //             "type":"postback",
-    //             "title":"Have me do it",
-    //             "payload":"LOOKUP_GOOGLE"
-    //           },
-    //           {
-    //             "type":"postback",
-    //             "title":"Stop this chat",
-    //             "payload": "BYE"
-    //           }
-    //         ]
-    //       }
-    //     }
-    // });
 
-
-
+        sendMessage(senderId, genericTemplateReply);
 
 
 };
