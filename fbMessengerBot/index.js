@@ -1,5 +1,6 @@
 var handleMessages = require('./handleMessages');
 var handlePostbacks = require('./handlePostbacks');
+var handleOptins = require('./handleOptins');
 
 
 module.exports = function (req, res) {
@@ -31,7 +32,7 @@ module.exports = function (req, res) {
     //messaging_optins
     if (event.optin && event.optin.ref) {
 
-
+        handleOptins(sender, event.optin);
 
     }
 
