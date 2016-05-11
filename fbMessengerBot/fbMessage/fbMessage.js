@@ -129,7 +129,13 @@ module.exports.ButtonTemplate = function (title) {
 
      self.addButton = function (buttonConfig) {
 
-        self.message.attachment.payload.buttons.push(buttonConfig);
+        if (self.message.attachment.payload.buttons.length <= 2) {
+            self.message.attachment.payload.buttons.push(buttonConfig);
+        } else {
+            console.warn('Can\'t add more than 3 buttons to ButtonTemplate');
+        }
+
+        
 
         return self;
      };
