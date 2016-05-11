@@ -27,7 +27,7 @@ module.exports.PlainText = function (text) {
     var self = this;
 
     if (!text) { 
-        throw Error('no message text provided');
+        throw Error('No message text provided');
     } 
 
     self.message = {
@@ -60,7 +60,20 @@ module.exports.PlainText = function (text) {
 module.exports.Image = function (imageUrl) {
     var self = this;
 
+    if (!imageUrl) { 
+        throw Error('No image url provided');
+    } 
 
+    self.message = {
+        "attachment":{
+            "type":"image",
+            "payload":{
+                "url": imageUrl
+            }
+        }
+    };
+
+    self.compose = composeMessage();
 
 };
 
@@ -96,9 +109,40 @@ module.exports.Image = function (imageUrl) {
   }
 
 */
-module.exports.ButtonTemplate = function () {
+module.exports.ButtonTemplate = function (title) {
     var self = this;
+    
+    if (!title) { 
+        throw Error('No template title provided');
+    } 
 
+    self.message =  {
+         "attachment": {
+             "type": "template",
+             "payload": {
+                 "template_type": "button",
+                 "text": title,
+                 "buttons": []
+             }
+         }
+     };
+
+     self.addButton = function (buttonConfig) {
+
+        self.message.attachment.payload.buttons.push(buttonConfig);
+
+        return self;
+     };
+
+    self.compose = function () {
+
+        if (self.message.attachment.payload.buttons.length === 0) {
+            throw Error('You have to add at least 1 button to ButtonTemplate message');
+        }
+
+
+        return self.message;
+    };
 
 };
 
