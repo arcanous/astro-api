@@ -225,12 +225,28 @@ module.exports.GenericTemplate = function () {
     };
 
 
-     self.addElement = function (elementConfig) {
+    self.addElement = function (elementConfig) {
+
+        elementConfig.buttons = [];
 
         self.message.attachment.payload.elements.push(elementConfig);
 
         return self;
-     };
+    };
+
+
+    self.addButton = function (buttonConfig) {
+
+        if (self.message.attachment.payload.elements.length === 0) {
+            throw Error('You have to add at least 1 element first to add buttons to it');
+        }
+
+        self.message.attachment.payload.elements[self.message.attachment.payload.elements.length - 1].buttons.push(buttonConfig);
+
+        return self;
+    };
+
+
 
 
 
