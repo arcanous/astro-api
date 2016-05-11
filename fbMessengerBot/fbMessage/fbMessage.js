@@ -229,7 +229,11 @@ module.exports.GenericTemplate = function () {
 
         elementConfig.buttons = [];
 
-        self.message.attachment.payload.elements.push(elementConfig);
+        if (self.message.attachment.payload.elements.length < 10) {
+            self.message.attachment.payload.elements.push(elementConfig);
+        } else {
+            console.warn('Can\'t add more than 10 elements to a GenericTemplate');
+        }
 
         return self;
     };
@@ -241,7 +245,13 @@ module.exports.GenericTemplate = function () {
             throw Error('You have to add at least 1 element first to add buttons to it');
         }
 
-        self.message.attachment.payload.elements[self.message.attachment.payload.elements.length - 1].buttons.push(buttonConfig);
+        var lastElementId = self.message.attachment.payload.elements.length - 1;
+
+        if (self.message.attachment.payload.elements[lastElementId].buttons.length <= 2) {
+            self.message.attachment.payload.elements[lastElementId].buttons.push(buttonConfig);
+        } else {
+            console.warn('Can\'t add more than 3 buttons to element #' + lastElementId);
+        }
 
         return self;
     };
