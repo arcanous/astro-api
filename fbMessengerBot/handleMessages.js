@@ -5,7 +5,7 @@ module.exports = function (senderId, message) {
     
 
     var textReply = new fbMessage
-        .PlainText("Debug: " + JSON.stringify(message))
+        .PlainText("Sender: " + senderId + " Debug: " + JSON.stringify(message))
         .compose();
 
 
