@@ -2,14 +2,9 @@
 
 
 function composeMessage () {
-    var self = this;
-
     return function () {
-
-        return self.message;
-
+        return this.message;
     }
-
 }
 
 
@@ -21,7 +16,7 @@ module.exports = {};
  * Plain text message
  ***************************************/
 
- /*
+ /* Example output:
     {
         "text":"hello, world!"
     } 
@@ -51,8 +46,7 @@ module.exports.PlainText = function (text) {
  * Image message
  ***************************************/
 
-/*
-
+/* Example output: 
     {
         "attachment":{
           "type":"image",
@@ -77,7 +71,7 @@ module.exports.Image = function (imageUrl) {
  * Button template
  ***************************************/
 
-/*
+/* Example output: 
 
   {
     "attachment":{
@@ -115,7 +109,7 @@ module.exports.ButtonTemplate = function () {
  * Generic template
  ***************************************/
 
-/*
+/* Example output: 
 
   {
     "attachment":{
@@ -186,7 +180,7 @@ module.exports.GenericTemplate = function () {
  * Receipt
  ***************************************/
 
-/*
+/* Example output: 
 
   {
     "attachment":{
