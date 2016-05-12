@@ -18,7 +18,7 @@ module.exports = function (senderId, message) {
     }
 
 
-    if (message.text.toLowerCase().substr(0, 4) === '@bot ') {
+    if (message.text.toLowerCase().substr(0, 5) === '@bot ') {
 
         handleBotCommands({
             senderId : senderId,
