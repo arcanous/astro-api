@@ -7,13 +7,13 @@ var debugMode = require('./config/debugMode');
 
 module.exports = function (senderId, message) {
     
-    if (debugMode.getDebugMode(senderId)) {
+    //if (debugMode.getDebugMode(senderId)) {
         var textReply = new fbMessage
             .PlainText("Message from " + senderId + ": " + JSON.stringify(message))
             .compose();
 
         sendMessage(senderId, textReply);
-    }
+    //}
 
 
     if (message.text.toLowerCase().substr(0, 5) === '@bot ') {

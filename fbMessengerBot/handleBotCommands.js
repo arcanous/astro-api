@@ -4,6 +4,15 @@ module.exports = function (config) {
 	
 	var senderId = config.senderId;
 
+
+
+            var textReply = new fbMessage
+                .PlainText("handleBotCommands " + config)
+                .compose();
+
+            sendMessage(senderId, textReply);
+
+
     switch (config.command) {
         case 'debug on':
             
