@@ -3,12 +3,11 @@ var fbMessage = require('./fbMessage/fbMessage');
 
 var handleBotCommands = require('./handleBotCommands');
 
-
-var debugSettings = process.env.BOT_DEBUG_SETTINGS || {}
+var debugMode = require('./config/debugMode');
 
 module.exports = function (senderId, message) {
     
-    if (debugSettings[senderId]) {
+    if (debugMode.getDebugMode(senderId)) {
         var textReply = new fbMessage
             .PlainText("Message from " + senderId + ": " + JSON.stringify(message))
             .compose();

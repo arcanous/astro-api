@@ -1,5 +1,4 @@
-var debugSettings = process.env.BOT_DEBUG_SETTINGS || {};
-
+var debugMode = require('./config/debugMode');
 
 module.exports = function (config) {
 	
@@ -8,7 +7,7 @@ module.exports = function (config) {
     switch (config.command) {
         case 'debug on':
             
-            debugSettings[senderId] = true;
+            debugMode.setDebugMode(senderId) = true;
             
             var textReply = new fbMessage
                 .PlainText("Debug turned on for sender: " + senderId)
@@ -19,7 +18,7 @@ module.exports = function (config) {
         break;
         case 'debug off':
             
-            debugSettings[senderId] = false;
+            debugMode.setDebugMode(senderId) = false;
 
             var textReply = new fbMessage
                 .PlainText("Debug turned off for sender: " + senderId)
