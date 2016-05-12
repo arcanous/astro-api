@@ -18,19 +18,19 @@ module.exports = function (senderId, message) {
     //}
 
 
-    // if (messageText.toLowerCase().substr(0, 5) === '@bot ') {
+    if (messageText.toLowerCase().substr(0, 5) === '@bot ') {
 
 
-    //     sendMessage(senderId, {
-    //         text : "@bot command received..."
-    //     });
+        sendMessage(senderId, {
+            text : "@bot command received..."
+        });
 
-    //     handleBotCommands({
-    //         senderId : senderId,
-    //         command : messageText.toLowerCase().substr(5)
-    //     });
+        handleBotCommands({
+            senderId : senderId,
+            command : messageText.toLowerCase().substr(5)
+        });
 
-    // }
+    }
 
 
 
