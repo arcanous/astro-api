@@ -7,7 +7,7 @@ module.exports = function (config) {
     switch (config.command) {
         case 'debug on':
             
-            debugMode.setDebugMode(senderId) = true;
+            debugMode.setDebugMode(senderId, true);
             
             var textReply = new fbMessage
                 .PlainText("Debug turned on for sender: " + senderId)
@@ -18,7 +18,7 @@ module.exports = function (config) {
         break;
         case 'debug off':
             
-            debugMode.setDebugMode(senderId) = false;
+            debugMode.setDebugMode(senderId, false);
 
             var textReply = new fbMessage
                 .PlainText("Debug turned off for sender: " + senderId)
