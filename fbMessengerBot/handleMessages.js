@@ -1,18 +1,33 @@
 var sendMessage = require('./fbMessage/sendMessage');
 var fbMessage = require('./fbMessage/fbMessage');
 
+var debugSettings = {};
+
+
 module.exports = function (senderId, message) {
     
+    if (debugSettings[senderId]) {
+        var textReply = new fbMessage
+            .PlainText("Message from " + senderId + ": " + JSON.stringify(message))
+            .compose();
 
-    var textReply = new fbMessage
-        .PlainText("Sender: " + senderId + " Debug: " + JSON.stringify(message))
-        .compose();
 
+        sendMessage(senderId, textReply);
+    }
 
-    sendMessage(senderId, textReply);
 
 
     switch (message.text) {
+        case '@bot debug on':
+            
+            debugSettings[senderId] = true;
+
+        break;
+        case '@bot debug off':
+            
+            debugSettings[senderId] = false;
+
+        break;
         case '@bot reply with image':
             
             var imageReply = new fbMessage

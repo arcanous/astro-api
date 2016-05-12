@@ -5,7 +5,7 @@ module.exports = function (senderId, postback) {
     
 
     sendMessage(senderId, {
-        text : "Debug: " + JSON.stringify(postback)
+        text : "Postback from " + senderId + ": " + JSON.stringify(postback)
     });
 
 

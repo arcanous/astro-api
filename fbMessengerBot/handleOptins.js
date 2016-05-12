@@ -5,7 +5,7 @@ module.exports = function (senderId, optin) {
     
 
     sendMessage(senderId, {
-        text : "Debug: " + JSON.stringify(optin)
+        text : "Option from " + senderId + ": " + JSON.stringify(optin)
     });
 
 

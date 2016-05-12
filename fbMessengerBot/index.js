@@ -17,7 +17,7 @@ module.exports = function (req, res) {
     //messages
     if (event.message && event.message.text) {
       
-      handleMessages(sender, event.message);
+        handleMessages(sender, event.message);
 
     }
 
