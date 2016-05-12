@@ -9,7 +9,7 @@ module.exports = function (senderId, message) {
     
     //if (debugMode.getDebugMode(senderId)) {
         var textReply = new fbMessage
-            .PlainText("Message from " + senderId + ": " + JSON.stringify(message))
+            .PlainText("[DEBUG] Sender:Id" + senderId + " Message JSON: " + JSON.stringify(message))
             .compose();
 
         sendMessage(senderId, textReply);
@@ -17,6 +17,11 @@ module.exports = function (senderId, message) {
 
 
     if (message.text.toLowerCase().substr(0, 5) === '@bot ') {
+
+
+        sendMessage(senderId, {
+            text : "@bot command received..."
+        });
 
         handleBotCommands({
             senderId : senderId,
