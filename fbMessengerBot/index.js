@@ -3,6 +3,10 @@ var handlePostbacks = require('./handlePostbacks');
 var handleOptins = require('./handleOptins');
 
 
+if (!process.env.BOT_DEBUG_SETTINGS) {
+    process.env.BOT_DEBUG_SETTINGS = {};
+}
+
 module.exports = function (req, res) {
 
   messaging_events = req.body.entry[0].messaging;

@@ -1,4 +1,4 @@
-
+var debugSettings = process.env.BOT_DEBUG_SETTINGS || {};
 
 
 module.exports = function (config) {

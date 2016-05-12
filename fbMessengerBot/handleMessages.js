@@ -4,8 +4,7 @@ var fbMessage = require('./fbMessage/fbMessage');
 var handleBotCommands = require('./handleBotCommands');
 
 
-var debugSettings = {};
-
+var debugSettings = process.env.BOT_DEBUG_SETTINGS || {}
 
 module.exports = function (senderId, message) {
     
